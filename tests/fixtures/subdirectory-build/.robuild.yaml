@@ -1,0 +1,11 @@
+%YAML 1.0
+---
+
+# Minimal build used to prove that the action can be pointed at a
+# 'directory' input that is not the workspace root (see issue #1).
+jobs:
+  build:
+    script:
+      - echo
+      - echo *** Directory-input smoke test ***
+      - echo

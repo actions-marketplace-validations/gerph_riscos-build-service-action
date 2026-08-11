@@ -1,0 +1,24 @@
+name: Test action
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-directory-input:
+    # Regression test for issue #1: the build tool must still be found
+    # when 'directory' points somewhere other than the workspace root.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build using a non-default directory
+        uses: ./
+        with:
+          directory: tests/fixtures/subdirectory-build
+          architecture: aarch32
+          timeout: 120
+          colour: 'no'
